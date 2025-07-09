@@ -6,12 +6,17 @@ import { hotelController } from "./services/hotel";
 import { roomController } from "./services/room";
 import swagger from "@elysiajs/swagger";
 
+const DOMAIN = process.env.NODE_ENV === 'production' 
+  ? 'https://book-hotel-backend.zeabur.app' 
+  : `http://localhost:${process.env.PORT || 8080}`;
+
 const app = new Elysia()
   .use(cors())
   .use(
     swagger({
       path: '/swagger',
       documentation: {
+        servers: [{ url: DOMAIN }],
         info: {
           title: "Booking Hotel API",
           version: "1.0.0",
