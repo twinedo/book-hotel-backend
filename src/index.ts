@@ -10,6 +10,7 @@ const app = new Elysia()
   .use(cors())
   .use(
     swagger({
+      path: '/swagger',
       documentation: {
         info: {
           title: "Booking Hotel API",
